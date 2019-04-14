@@ -16,3 +16,5 @@ INSERT INTO TB_PARKING_LOTS(id, parking_space) VALUES ('15', 'Vaga 15');
 
 INSERT INTO TB_PARKING_PRICES(id, permanence, price) VALUES ('1', 'Até 3 horas', 7.00);
 INSERT INTO TB_PARKING_PRICES(id, permanence, price) VALUES ('2', 'Hora extra', 3.00);
+
+INSERT INTO TB_PARKING_LEASED(id, licence_plate, start_date, parking_lots_id) VALUES ('1', 'OGG-5654', '2019-04-14T11:12:18.973', '1');

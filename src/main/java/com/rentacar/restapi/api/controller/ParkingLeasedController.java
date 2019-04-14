@@ -1,6 +1,7 @@
 package com.rentacar.restapi.api.controller;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -48,7 +49,7 @@ public class ParkingLeasedController {
 			} 
 			
 			ParkingLeased parkingLeased = new ParkingLeased();
-			parkingLeased.setStartDate(new Date());
+			parkingLeased.setStartDate(LocalDateTime.now());
 			parkingLeased.setLicencePlate(parkingLeasedRequest.getLicencePlate());
 			parkingLeased.setParkingLots(this.parkingLotsService.findByParkingSpace(parkingLeasedRequest.getParkingSpace()));
 			ParkingLeased parkingLeasedPersisted = this.service.createOrUpdate(parkingLeased);
