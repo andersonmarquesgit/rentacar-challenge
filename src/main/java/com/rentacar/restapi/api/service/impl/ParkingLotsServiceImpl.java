@@ -1,5 +1,7 @@
 package com.rentacar.restapi.api.service.impl;
 
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,11 @@ public class ParkingLotsServiceImpl implements ParkingLotsService {
 	@Override
 	public int countPackingSpaceAvailable() {
 		return repository.countPackingSpaceAvailable();
+	}
+
+	@Override
+	public Set<ParkingLots> findPackingSpaceAvailable() {
+		return repository.findPackingSpaceAvailable();
 	}
 
 }
