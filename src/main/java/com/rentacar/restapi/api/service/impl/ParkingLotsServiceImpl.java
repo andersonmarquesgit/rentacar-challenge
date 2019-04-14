@@ -18,4 +18,9 @@ public class ParkingLotsServiceImpl implements ParkingLotsService {
 		return repository.findByParkingSpace(parkingSpace);
 	}
 
+	@Override
+	public int countPackingSpaceAvailable() {
+		return repository.countPackingSpaceAvailable();
+	}
+
 }

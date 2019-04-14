@@ -65,11 +65,13 @@ public class ParkingLeasedController {
 		if(parkingLeasedRequest.getLicencePlate() == null) {
 			result.addError(new ObjectError("licencePlate", "Licence plate no information"));
 		}else if(this.service.findByLicencePlate(parkingLeasedRequest.getLicencePlate()) != null) {
-			result.addError(new ObjectError("licencePlate", "Parking space already exists"));
+			result.addError(new ObjectError("licencePlate", "Licence plate already exists"));
 		}
 		
 		if(parkingLeasedRequest.getParkingSpace() == null) {
 			result.addError(new ObjectError("parkingSpace", "Parking space no information"));
+		}else if(this.service.findByParkingSpace(parkingLeasedRequest.getParkingSpace()) != null) {
+			result.addError(new ObjectError("parkingSpace", "Parking space already exists"));
 		}
 		
 	}

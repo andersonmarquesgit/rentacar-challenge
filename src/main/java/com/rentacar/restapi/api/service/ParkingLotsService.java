@@ -6,4 +6,6 @@ public interface ParkingLotsService {
 
 	ParkingLots findByParkingSpace(String parkingSpace);
 
+	int countPackingSpaceAvailable();
+
 }

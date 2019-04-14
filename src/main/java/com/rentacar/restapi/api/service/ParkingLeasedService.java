@@ -15,4 +15,6 @@ public interface ParkingLeasedService {
 	Page<ParkingLeased> findAll(int page, int count);
 
 	ParkingLeased findByLicencePlate(String licencePlate);
+
+	ParkingLeased findByParkingSpace(String parkingSpace);
 }

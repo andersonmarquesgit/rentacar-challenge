@@ -40,4 +40,9 @@ public class ParkingLeasedServiceImpl implements ParkingLeasedService{
 		return repository.findByLicencePlate(licencePlate);
 	}
 
+	@Override
+	public ParkingLeased findByParkingSpace(String parkingSpace) {
+		return repository.findByParkingSpace(parkingSpace);
+	}
+
 }
