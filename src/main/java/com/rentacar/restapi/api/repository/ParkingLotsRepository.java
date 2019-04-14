@@ -6,4 +6,6 @@ import com.rentacar.restapi.api.entity.ParkingLots;
 
 public interface ParkingLotsRepository extends JpaRepository<ParkingLots, String> {
 
+	ParkingLots findByParkingSpace(String parkingSpace);
+
 }

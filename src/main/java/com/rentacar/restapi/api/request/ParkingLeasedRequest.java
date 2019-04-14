@@ -1,13 +1,12 @@
 package com.rentacar.restapi.api.request;
 
-import java.util.List;
-
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class AssignUsersRequest {
+public class ParkingLeasedRequest {
 
-	List<String> userIds;
+	private String licencePlate;
+	private String parkingSpace;
 }

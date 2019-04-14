@@ -1,12 +1,9 @@
 package com.rentacar.restapi.api.service;
 
-import java.util.List;
-import java.util.Set;
-
-import org.springframework.data.domain.Page;
-
-import com.rentacar.restapi.api.entity.User;
+import com.rentacar.restapi.api.entity.ParkingLots;
 
 public interface ParkingLotsService {
+
+	ParkingLots findByParkingSpace(String parkingSpace);
 
 }

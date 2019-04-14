@@ -37,23 +37,18 @@ public class RentacarApplication {
 		admin.setPassword(passwordEncoder.encode("123456"));
 		admin.setProfile(ProfileEnum.ROLE_ADMIN);
 		
-		User userScreening = new User();
-		userScreening.setEmail("sc@rentacar.com");
-		userScreening.setPassword(passwordEncoder.encode("123456"));
-		userScreening.setProfile(ProfileEnum.ROLE_USER_SCREENING);
+		User userTechnician = new User();
+		userTechnician.setEmail("sc@rentacar.com");
+		userTechnician.setPassword(passwordEncoder.encode("123456"));
+		userTechnician.setProfile(ProfileEnum.ROLE_TECHNICIAN);
 		
-		User userFinisher = new User();
-		userFinisher.setEmail("fc@rentacar.com");
-		userFinisher.setPassword(passwordEncoder.encode("123456"));
-		userFinisher.setProfile(ProfileEnum.ROLE_USER_FINISHER);
 
 		User find = userRepository.findByEmail("admin@rentacar.com");
 		User find1 = userRepository.findByEmail("sc@rentacar.com");
 		User find2 = userRepository.findByEmail("fc@rentacar.com");
 		if (find == null && find1 == null && find2 == null) {
 			userRepository.save(admin);
-			userRepository.save(userScreening);
-			userRepository.save(userFinisher);
+			userRepository.save(userTechnician);
 		}
 	}
 	
