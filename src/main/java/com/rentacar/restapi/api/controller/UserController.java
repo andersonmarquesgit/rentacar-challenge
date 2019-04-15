@@ -52,7 +52,7 @@ public class UserController {
 											// usuários.
 	@ApiOperation(value = "Criação de usuários", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiResponses(@ApiResponse(code = 201, message = "Novo usuário criado", response = User.class, 
-		responseHeaders = @ResponseHeader(name = "Location", description = "uri do novo usuário", response = String.class)))
+		responseHeaders = @ResponseHeader(name = "User", description = "Usuário criado", response = User.class)))
 	public ResponseEntity<Response<User>> create(HttpServletRequest request, 
 			@ApiParam(
 				    value="User", 

@@ -8,6 +8,8 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
@@ -30,6 +32,10 @@ import com.rentacar.restapi.api.service.ParkingPricesService;
 import com.rentacar.restapi.api.service.TicketsService;
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.ResponseHeader;
 
 @RestController
 @RequestMapping("/api/tickets")
@@ -48,6 +54,9 @@ public class TicketController {
 	
 	@PostMapping
 	@PreAuthorize("hasAnyRole('TECHNICIAN')")
+	@ApiOperation(value = "Pagar ticket", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ApiResponses(@ApiResponse(code = 201, message = "Pagamento do ticket realizado", response = Tickets.class, 
+		responseHeaders = @ResponseHeader(name = "Tickets", description = "Ticket pago", response = Tickets.class)))
 	public ResponseEntity<?> create(HttpServletRequest request, @RequestBody ParkingSpaceRequest parkingSpaceRequest, BindingResult result) {
 		Response<Tickets> response = new Response<Tickets>();
 		
@@ -73,7 +82,7 @@ public class TicketController {
 			return ResponseEntity.badRequest().body(response);
 		}
 		
-		return ResponseEntity.ok(response);
+		return new ResponseEntity<>(response, HttpStatus.CREATED);
 	}
 	
 	private void calcTicketPayment(Tickets ticket) {
