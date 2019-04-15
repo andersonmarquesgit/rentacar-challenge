@@ -1,6 +1,7 @@
 package com.rentacar.restapi.api.security.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -20,8 +21,15 @@ import com.rentacar.restapi.api.security.jwt.JwtTokenUtil;
 import com.rentacar.restapi.api.security.model.CurrentUser;
 import com.rentacar.restapi.api.service.UserService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.ResponseHeader;
+
 @RestController
 @CrossOrigin(origins = "*")//Permitindo o acesso de qualquer IP, porta, etc.
+@Api(value = "Authentication")
 public class AuthenticationRestController {
 
 	@Autowired
@@ -37,6 +45,9 @@ public class AuthenticationRestController {
 	private UserService userService;
 	
 	@PostMapping(value = "/api/auth")
+	@ApiOperation(value = "Autenticação de usuário", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ApiResponses(@ApiResponse(code = 200, message = "Success", response = CurrentUser.class, 
+		responseHeaders = @ResponseHeader(name = "Location", description = "token", response = String.class)))
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest) throws AuthenticationException {
 		
 		final Authentication authentication = authenticationManager.authenticate(
