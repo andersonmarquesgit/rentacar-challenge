@@ -1,5 +1,8 @@
 package com.rentacar.restapi.api.service.impl;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,5 +19,10 @@ public class TicketsServiceImpl implements TicketsService {
 	@Override
 	public Tickets createOrUpdate(Tickets tickets) {
 		return this.repository.save(tickets);
+	}
+
+	@Override
+	public BigDecimal calculatePayment(LocalDateTime startDate, LocalDateTime finishDate) {
+		return repository.sumTotalValueTickets(startDate, finishDate);
 	}
 }
