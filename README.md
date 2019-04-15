@@ -42,7 +42,10 @@ Métodos a serem criados:
   * Pagar ticket
   * Relatório com ocupação atual do estacionamento
   * Relatório com valor arrecadado por período
-- Como banco de dados está sendo utilizado o H2, banco que sobe em tempo de execução da aplicação.
+- Como banco de dados está sendo utilizado o H2, banco que sobe em tempo de execução da aplicação: http://~:8888/h2/
+  * Usuário: sa 
+  * Password:
+  * BD: rentacarDB
 - Porta padrão da API: 8888
 - Documentação da API utilizando Swagger, disponível em: http://~:8888/doc/index.html
 
