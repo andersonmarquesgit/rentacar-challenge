@@ -48,4 +48,5 @@ Métodos a serem criados:
   * BD: rentacarDB
 - Porta padrão da API: 8888
 - Documentação da API utilizando Swagger, disponível em: http://~:8888/doc/index.html
+- Request utilizado no Postman disponíveis em: resources/postman/Rentacar.postman_collection.json
 
