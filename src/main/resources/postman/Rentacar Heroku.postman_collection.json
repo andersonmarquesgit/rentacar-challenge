@@ -1,0 +1,455 @@
+{
+	"info": {
+		"_postman_id": "0f45302c-ff01-4c4b-ae62-b3e541cee6f5",
+		"name": "Rentacar Heroku",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Authentication",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4909945d-a7e4-4aa9-bc9c-d79c96f0fb6d",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"token\", jsonData.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"admin@rentacar.com\",\n\t\"password\": \"123456\"\n}"
+						},
+						"url": {
+							"raw": "https://rentacar-challenger.herokuapp.com/api/auth",
+							"protocol": "https",
+							"host": [
+								"rentacar-challenger",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkByZW50YWNhci5jb20iLCJjcmVhdGVkIjoxNTU1Mjk2ODIyMTkyLCJleHAiOjE1NTU5MDE2MjJ9.lQWU9c7EfmyJSsiTk75FnPiXwn25pt2NSdIvx9_52BjgmDv-sC_VlGaPGL4O4n_nmqjy9Ju45JDs4_OAo-7LtA"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"tech@gmail.com\",\n\t\"password\": \"123456\",\n\t\"profile\": \"ROLE_TECHNICIAN\"\n}"
+						},
+						"url": {
+							"raw": "https://rentacar-challenger.herokuapp.com/api/user",
+							"protocol": "https",
+							"host": [
+								"rentacar-challenger",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkByZW50YWNhci5jb20iLCJjcmVhdGVkIjoxNTU1MjQ4Nzg4NTkwLCJleHAiOjE1NTU4NTM1ODh9.fWXdK-2Q677ieSl1sjOW65STJSpp9XLZNdo1P8Sya_vxP_QwCr9vX-2xGbGwf-prVYe82kmE5UjIPCxKFR8rzA"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": \"2\",\n\t\"email\": \"test2@gmail.com\",\n\t\"password\": \"123456\",\n\t\"profile\": \"ROLE_TECHNICIAN\"\n}"
+						},
+						"url": {
+							"raw": "https://rentacar-challenger.herokuapp.com/api/user",
+							"protocol": "https",
+							"host": [
+								"rentacar-challenger",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find One User By Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkByZW50YWNhci5jb20iLCJjcmVhdGVkIjoxNTU1MjQ4Nzg4NTkwLCJleHAiOjE1NTU4NTM1ODh9.fWXdK-2Q677ieSl1sjOW65STJSpp9XLZNdo1P8Sya_vxP_QwCr9vX-2xGbGwf-prVYe82kmE5UjIPCxKFR8rzA"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://rentacar-challenger.herokuapp.com/api/user/2",
+							"protocol": "https",
+							"host": [
+								"rentacar-challenger",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"user",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find Users Pages",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://rentacar-challenger.herokuapp.com/api/user/0/10",
+							"protocol": "https",
+							"host": [
+								"rentacar-challenger",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"user",
+								"0",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkByZW50YWNhci5jb20iLCJjcmVhdGVkIjoxNTU1MjQ4Nzg4NTkwLCJleHAiOjE1NTU4NTM1ODh9.fWXdK-2Q677ieSl1sjOW65STJSpp9XLZNdo1P8Sya_vxP_QwCr9vX-2xGbGwf-prVYe82kmE5UjIPCxKFR8rzA"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://rentacar-challenger.herokuapp.com/api/user/4",
+							"protocol": "https",
+							"host": [
+								"rentacar-challenger",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"user",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Parking Leased",
+			"item": [
+				{
+					"name": "Create Parking Leased",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzY0ByZW50YWNhci5jb20iLCJjcmVhdGVkIjoxNTU1MjYzOTc4OTIwLCJleHAiOjE1NTU4Njg3Nzh9.FADLogQA8JrmUQcWj98Y2ZJcBbDMTWNCU8txRYpl6bZq80AuxWH5aPfZV-erQNm90RcADzpZzQtjEuP3tMmJHg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"licencePlate\": \"OGG-5454\",\n\t\"parkingSpace\": \"Vaga 12\"\n}"
+						},
+						"url": {
+							"raw": "https://rentacar-challenger.herokuapp.com/api/parkingLeased?Authorization={{token}}",
+							"protocol": "https",
+							"host": [
+								"rentacar-challenger",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"parkingLeased"
+							],
+							"query": [
+								{
+									"key": "Authorization",
+									"value": "{{token}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Parking Lots",
+			"item": [
+				{
+					"name": "QTD Parking Lots Available",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://rentacar-challenger.herokuapp.com/api/parkingLots/available",
+							"protocol": "https",
+							"host": [
+								"rentacar-challenger",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"parkingLots",
+								"available"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Parking Lots Available",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://rentacar-challenger.herokuapp.com/api/parkingLots/availablePosition",
+							"protocol": "https",
+							"host": [
+								"rentacar-challenger",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"parkingLots",
+								"availablePosition"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tickets",
+			"item": [
+				{
+					"name": "Create Ticket Payment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"parkingSpace\": \"Vaga 13\"\n}"
+						},
+						"url": {
+							"raw": "https://rentacar-challenger.herokuapp.com/api/tickets",
+							"protocol": "https",
+							"host": [
+								"rentacar-challenger",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"tickets"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Report",
+			"item": [
+				{
+					"name": "Relatório com ocupação atual do estacionamento",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://rentacar-challenger.herokuapp.com/api/report/parkingLeased/0/10",
+							"protocol": "https",
+							"host": [
+								"rentacar-challenger",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"report",
+								"parkingLeased",
+								"0",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Relatório com valor arrecadado por período",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"startDate\": \"2019-04-01T11:12:18.973\",\n\t\"finishDate\": \"2019-05-01T11:12:18.973\"\n}"
+						},
+						"url": {
+							"raw": "https://rentacar-challenger.herokuapp.com/api/report/payments",
+							"protocol": "https",
+							"host": [
+								"rentacar-challenger",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"report",
+								"payments"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
