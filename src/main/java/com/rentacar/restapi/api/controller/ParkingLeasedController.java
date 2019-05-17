@@ -91,5 +91,9 @@ public class ParkingLeasedController {
 			result.addError(new ObjectError("parkingSpace", "Parking space already exists"));
 		}
 		
+		if(this.parkingLotsService.findByParkingSpace(parkingLeasedRequest.getParkingSpace()) == null) {
+			result.addError(new ObjectError("parkingSpace", "Parking lots no exist"));
+		}
+		
 	}
 }
